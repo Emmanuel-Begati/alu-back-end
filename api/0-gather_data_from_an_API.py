@@ -16,8 +16,9 @@ def task_title(name):
     employee_name = response.json()[name]['name']
     number_of_done_tasks = len(counter)
     print (employee_name, 'has completed',number_of_done_tasks , '/20 tasks')
-    for task in 
-
+    for task in todo_list.json():
+        if task['completed'] == True:
+            print (task['title'])
 
 name = 0
 while name < 10:
