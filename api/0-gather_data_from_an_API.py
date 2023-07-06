@@ -2,6 +2,9 @@
 import requests
 import json
 
+"""
+    Python script that returns TODO list progress for a given employee ID
+"""
 response = requests.get('https://jsonplaceholder.typicode.com/users')
 todo_list = requests.get('https://jsonplaceholder.typicode.com/todos')
 
