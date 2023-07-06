@@ -14,7 +14,7 @@ if __name__ == "__main__":
     name = sys.argv[0]
     def task_title(name):
         """
-        Retrieves and displays the completed tasks of a specific employee from a mock API.
+        Retrieves and displays compeleted tasks
         Args:
             name (int): The employee's index in the user list.
 
@@ -25,20 +25,13 @@ if __name__ == "__main__":
         counter = []
         for i in todo_list.json():
             if i['userId'] == userId:
-                if i['completed'] == True:
+                if i['completed'] == 1:
                     counter.append('True')
-                
         employee_name = response.json()[name]['name']
-        number_of_done_tasks = len(counter)
-        print (employee_name, 'has completed',number_of_done_tasks , '/20 tasks')
+        num_of_done_tasks = len(counter)
+        print(employee_name, 'has completed', num_of_done_tasks , '/20 tasks')
         for task in todo_list.json():
-            if task['completed'] == True:
+            if task['completed'] == 1:
                 if task['userId'] == userId:
-                    print (task['title'])
-        
-
-    
+                    print(task['title'])
     (task_title(name))
-
-    
-
