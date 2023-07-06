@@ -1,13 +1,14 @@
+#!/usr/bin/python
+"""Module"""
+
 import requests
 import json
 import sys
-"""
-    Python script that returns TODO list progress for a given employee ID
-"""
+
+"""Module"""
+
 if __name__ == "__main__":
-    """
-        Request user info by employee ID
-    """
+    """IF SCRIPT IS NOT RUN AS MODULE"""
     response = requests.get('https://jsonplaceholder.typicode.com/users')
     todo_list = requests.get('https://jsonplaceholder.typicode.com/todos')
     name = sys.argv[0]
@@ -36,9 +37,8 @@ if __name__ == "__main__":
                     print (task['title'])
         
 
-    name = 0
-    while name < 10:
-        (task_title(name))
-        name += 1
+    
+    (task_title(name))
+
     
 
