@@ -12,7 +12,7 @@ if __name__ == "__main__":
     response = requests.get('https://jsonplaceholder.typicode.com/users')
     todo_list = requests.get('https://jsonplaceholder.typicode.com/todos')
     
-    name = int(sys.argv[1])
+    name = int(sys.argv[0])
 
     def task_title(name):
         """
@@ -23,7 +23,7 @@ if __name__ == "__main__":
         Returns:
             None
         """
-        userId = name -1
+        userId = name 
         counter = []
         for i in todo_list.json():
             if i['userId'] == userId:
