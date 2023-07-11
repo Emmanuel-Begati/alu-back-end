@@ -23,13 +23,13 @@ if __name__ == "__main__":
         Returns:
             None
         """
-        userId = name + 2
+        userId = name + 1
         counter = []
         for i in todo_list.json():
             if i['userId'] == userId:
                 if i['completed'] == 1:
                     counter.append('True')
-        employee_name = response.json()[name]['name']
+        employee_name = response.json()[(name + 1)]['name']
         num_of_done_tasks = len(counter)
         print("{} is done with tasks({}/20)".format(employee_name, num_of_done_tasks))
         for task in todo_list.json():
