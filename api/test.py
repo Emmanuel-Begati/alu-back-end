@@ -10,7 +10,7 @@ if __name__ == "__main__":
     """IF SCRIPT IS NOT RUN AS MODULE"""
     response = requests.get('https://jsonplaceholder.typicode.com/users')
     todo_list = requests.get('https://jsonplaceholder.typicode.com/todos')
-    
+    name = sys.argv[0]
 
     def task_title(name):
         """
@@ -21,17 +21,16 @@ if __name__ == "__main__":
         Returns:
             None
         """
-        userId = name + 1
         counter = []
-        for i in todo_list.json():
-            if i['userId'] == userId:
-                if i['completed'] == 1:
-                    counter.append('True')
+       
+        if todo_list.json()[1]['userId'] == name:
+            if todo_list.json()['completed'] == 1:
+                counter.append('True')
         employee_name = response.json()[name]['name']
         num_of_done_tasks = len(counter)
         print(employee_name, 'has completed', num_of_done_tasks, '/20 tasks')
-        for task in todo_list.json():
-            if task['completed'] == 1:
-                if task['userId'] == userId:
-                    print(task['title'])
-    (task_title(2))
+        # for task in todo_list.json():
+        #     if task['completed'] == 1:
+        #         if task['userId'] == userId:
+        #             print(task['title'])
+    (task_title(name))
