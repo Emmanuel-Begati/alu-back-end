@@ -23,7 +23,7 @@ if __name__ == "__main__":
         Returns:
             None
         """
-        userId = name 
+        userId = name + 1
         counter = []
         for i in todo_list.json():
             if i['userId'] == userId:
