@@ -32,5 +32,8 @@ if __name__ == "__main__":
         e_name = response.json()[(name - 1)]['name']
         tasks = len(counter)
         print("Employee {} is done with tasks({}/20):".format(e_name, tasks))
-        print("\t {}".format(task.get("title")))
+        for task in todo_list.json():
+            if task['completed'] == 1:
+                if task['userId'] == userId:
+                    print(task['title'])
     (task_title(name))
