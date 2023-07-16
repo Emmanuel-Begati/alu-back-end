@@ -11,7 +11,7 @@ if __name__ == "__main__":
     """IF SCRIPT IS NOT RUN AS MODULE"""
     response = requests.get('https://jsonplaceholder.typicode.com/users')
     todo_list = requests.get('https://jsonplaceholder.typicode.com/todos')
-    # name = int(sys.argv[1])
+    name = int(sys.argv[1])
 
     def task_title(name):
         """
@@ -22,7 +22,6 @@ if __name__ == "__main__":
         Returns:
             None
         """
-    name = 2
     userId = name
     str_userId = str(userId)
     user = response.json()[(name - 1)]["username"]
@@ -37,4 +36,4 @@ if __name__ == "__main__":
                     data = {str_userId: the_task}
                     json_data = json.dumps(data)
                     file.write(json_data)
-    (task_title(2))
+    (task_title(name))
