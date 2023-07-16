@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """Module"""
 
+import csv
 import json
 import requests
 import sys
-import csv
 
 """Module"""
 
@@ -31,5 +31,6 @@ if __name__ == "__main__":
                         done = task['completed']
                         # print(userId, user, done, task['title'])
                         file_editor = csv.writer(file, quoting=csv.QUOTE_ALL)
-                        file_editor.writerow([userId, user, done, task['title']])
+                        u_task = task['title']
+                        file_editor.writerow([userId, user, done, u_task])
     (task_title(name))
