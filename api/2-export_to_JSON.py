@@ -28,8 +28,7 @@ if __name__ == "__main__":
     for task in todo_list.json():
             the_task = []
             if task['userId'] == userId:
-                done = task['completed']
-                # print(userId, user, done, task['title'])
+                done = task['complete']
                 u_task = task['title']
                 the_task.append({"task": u_task, 'completed': done, 'username': user})
     with open(f"{userId}.json", "w") as file:
