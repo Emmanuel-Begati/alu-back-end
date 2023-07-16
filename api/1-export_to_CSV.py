@@ -12,7 +12,7 @@ if __name__ == "__main__":
     """IF SCRIPT IS NOT RUN AS MODULE"""
     response = requests.get('https://jsonplaceholder.typicode.com/users')
     todo_list = requests.get('https://jsonplaceholder.typicode.com/todos')
-    # name = int(sys.argv[1])
+    name = int(sys.argv[1])
 
     def task_title(name):
         """
@@ -32,4 +32,4 @@ if __name__ == "__main__":
                         # print(userId, user, done, task['title'])
                         file_editor = csv.writer(file, quoting=csv.QUOTE_ALL)
                         file_editor.writerow([userId, user, done, task['title']])
-    (task_title(2))
+    (task_title(name))
