@@ -27,10 +27,11 @@ if __name__ == "__main__":
     with open(f"{userId}.json", "w") as file:
         the_task = []
         for task in todo_list.json():
-                if task['userId'] == userId:
-                    done = task['completed']
-                    u_task = task['title']
-                    the_task.append({"task": u_task, 'completed': done, 'username': user})
+            if task['userId'] == userId:
+                done = task['completed']
+                u_task = task['title']
+                task_d = {"task": u_task, 'completed': done, 'username': user}
+                the_task.append(task_d)
         data = {str_userId: the_task}
         json_data = json.dumps(data)
         file.write(json_data)
