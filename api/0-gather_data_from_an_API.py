@@ -1,39 +1,27 @@
-#/usr/bin/python3
-"""Module"""
+#!/usr/bin/python3
+""" Library to gather data from an API """
 
-import json
 import requests
 import sys
 
-"""Module"""
+""" Function to gather data from an API """
 
 if __name__ == "__main__":
-    """IF SCRIPT IS NOT RUN AS MODULE"""
-    response = requests.get('https://jsonplaceholder.typicode.com/users')
-    todo_list = requests.get('https://jsonplaceholder.typicode.com/todos')
-    
-    name = int(sys.argv[1])
+    employee_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
 
-    def task_title(name):
-        """
-        Retrieves and displays compeleted tasks
-        Args:
-            name (int): The employee's index in the user list.
+    todo = "https://jsonplaceholder.typicode.com/todos?userId={}"
+    todo = todo.format(employee_id)
 
-        Returns:
-            None
-        """
-        userId = name 
-        counter = []
-        for i in todo_list.json():
-            if i['userId'] == userId:
-                if i['completed'] == 1:
-                    counter.append('True')
-        employee_name = response.json()[name]['name']
-        num_of_done_tasks = len(counter)
-        print("{} is done with tasks ({}/20)".format(employee_name, num_of_done_tasks))
-        for task in todo_list.json():
-            if task['completed'] == 1:
-                if task['userId'] == userId:
-                    print(task['title'])
-    (task_title(name))
+    user_info = requests.request("GET", url).json()
+    todo_info = requests.request("GET", todo).json()
+
+    employee_name = user_info.get("name")
+    total_tasks = list(filter(lambda x: (x["completed"] is True), todo_info))
+    task_com = len(total_tasks)
+    total_task_done = len(todo_info)
+
+    print("Employee {} is done with tasks({}/{}):".format(employee_name,
+          task_com, total_task_done))
+
+    [print("\t {}".format(task.get("title"))) for task in total_tasks]
